@@ -22,4 +22,13 @@ def resolve(points=(), lines=(), circles=()):
             x_max = circle[0] + ray
         if circle[1] + ray > y_max:
             y_max = circle[1] + ray
+    for line in lines:
+        if line[0] < x_min:
+            x_min = line[0]
+        if line[1] < y_min:
+            y_min = line[1]
+        if line[2] > x_max:
+            x_max = line[2]
+        if line[3] > y_max:
+            y_max = line[3]
     return '{0} {1} {2} {3}'.format(x_min, y_min, x_max, y_max)
