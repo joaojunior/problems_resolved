@@ -1,8 +1,11 @@
-def resolve(points=(), lines=(), circles=()):
+def resolve(points=[], lines=(), circles=()):
     x_min = 1000
     x_max = -1000
     y_min = 1000
     y_max = -1000
+    for line in lines:
+        points.append((line[0], line[1]))
+        points.append((line[2], line[3]))
     for point in points:
         if point[0] < x_min:
             x_min = point[0]
@@ -22,13 +25,4 @@ def resolve(points=(), lines=(), circles=()):
             x_max = circle[0] + ray
         if circle[1] + ray > y_max:
             y_max = circle[1] + ray
-    for line in lines:
-        if line[0] < x_min:
-            x_min = line[0]
-        if line[1] < y_min:
-            y_min = line[1]
-        if line[2] > x_max:
-            x_max = line[2]
-        if line[3] > y_max:
-            y_max = line[3]
     return '{0} {1} {2} {3}'.format(x_min, y_min, x_max, y_max)
