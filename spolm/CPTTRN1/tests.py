@@ -11,5 +11,6 @@ class TestCPTTRN1(unittest.TestCase):
 
     def test_third_example(self):
         self.assertEqual('*.*.*\n.*.*.', resolve(lines=2, collumns=5))
+
 if __name__ == '__main__':
     unittest.main()
